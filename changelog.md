@@ -5,6 +5,8 @@
 ##### Added
 Feature - Virtualization Page
 Feature - Containerization Page
-Feature - Containerization vs Virtualization
+Feature - Containerization vs Virtualization Page
+Feature - About Page
 
 ##### Changed
+About page title
