@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Setup a web server</title>
+      <style>
+          .new{
+              margin-left: 10%;margin-right: 10%;
+          }
+      </style>
+  </head>
+  <body>
+    <nav class="navbar new navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Docker, Linux, and Containerization</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Team</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Pages
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="virtualization.html">Virtualization</a>
+          <a class="dropdown-item" href="containerization.html">Containerization</a>
+          <a class="dropdown-item" href="containerization_virtualization.html">Virtualization vs containerization</a>
+          <a class="dropdown-item" href="#">Setup a web server</a>
+          <a class="dropdown-item" href="#">Basic Linux commands</a>
+          <a class="dropdown-item" href="#">Connect Docker with Pycharm</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+      <div class="col-8">
+          &nbsp
+          <div style="background-color: white;padding: 0px;margin: 0px" class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h3>Server on local computer</h3>
+            <h1>How to setup a web server on your local computer using docker?</h1>
+          </div>
+      </div>
+        &nbsp;
+
+        &nbsp;
+        <p><b>Step 1</b> − The first step is to build our Docker File. Let’s use vim and create a Docker File with the following information.</p>
+        &nbsp;<pre style="border: black 1px solid;padding: 2px;">FROM ubuntu
+RUN apt-get update
+RUN apt-get install –y apache2
+RUN apt-get install –y apache2-utils
+RUN apt-get clean
+EXPOSE 80 CMD [“apache2ctl”, “-D”, “FOREGROUND”]</pre>
+        <p style=font-family:"Montage">
+The following points need to be noted about the above statements −
+
+        </p>
+          <ul>
+              <li>
+                  We are first creating our image to be from the Ubuntu base image.
+              </li>
+              <li>We are first creating our image to be from the Ubuntu base image.</li>
+              <li>Next, we are going to use the RUN command to update all the packages on the Ubuntu system.</li>
+              <li>Next, we use the RUN command to install apache2 on our image.</li>
+              <li>Next, we use the RUN command to install the necessary utility apache2 packages on our image.</li>
+              <li>Next, we use the RUN command to clean any unnecessary files from the system.</li>
+              <li>The EXPOSE command is used to expose port 80 of Apache in the container to the Docker host.</li>
+              <li>Finally, the CMD command is used to run apache2 in the background.</li>
+
+
+
+          </ul>
+          &nbsp;
+<p><b>Step 2</b> − Run the Docker build command to build the Docker file. It can be done using the following command</p>
+          <pre style="border: black 1px solid;padding: 2px;">sudo docker run –d –p 80:80 mywebserver</pre>
+          <p>We are tagging our image as mywebserver. Once the image is built, you will get a successful message that the file has been built.</p>
+          <p><b>Step 3</b> − Now that the web server file has been built, it’s now time to create a container from the image. We can do this with the Docker run command.</p>
+          <pre style="border: black 1px solid;padding: 2px;">sudo docker build –t=”mywebserver”</pre>
+          <p>We are tagging our image as mywebserver. Once the image is built, you will get a successful message that the file has been built.</p>
+<p style=font-family:"Montage">
+The following points need to be noted about the above command −
+
+        </p>
+          <ul>
+              <li>
+                  The port number exposed by the container is 80. Hence with the –p command, we are mapping the same port number to the 80 port number on our localhost.
+              </li>
+              <li>The –d option is used to run the container in detached mode. This is so that the container can run in the background.</li>
+          </ul>
+          <p>If you go to port 80 of the Docker host in your web browser, you will now see that Apache is up and running.</p>
+
+        &nbsp;
+&nbsp;<img src="images/apache_is_running.jpeg" class="rounded" style="max-height: 100%; max-width: 100%;" >
+
+
+<p style=font-family:"Montage";font-size:25px;">
+          Source: <a href="https://www.tutorialspoint.com/docker/building_web_server_docker_file.htm">Tutorial point</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>
+        </p>
+
+
+
+
+      </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<div class="position-relative">
+    <footer>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright: IS601 Docker Website Project
+      </div>
+    </footer>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
