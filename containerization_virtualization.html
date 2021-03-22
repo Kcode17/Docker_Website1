@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+
+    <title>Containerization vs Virtualization</title>
+  </head>
+  <body>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Team</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Virtualization</a>
+          <a class="dropdown-item" href="#">Containerization</a>
+          <a class="dropdown-item" href="#">Virtualization vs Containerization</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+      <div class="col-8">
+          &nbsp
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h3>Containerization vs Virtualization</h3>
+            <h1>How do they compare?</h1>
+          </div>
+      </div>
+        &nbsp;
+        <img src="images/cv_1.JPG" class="rounded" style="max-height: 100%; max-width: 100%;" >
+        &nbsp;
+        <h3>Containers</h3>
+        &nbsp;
+        <p style=font-family:"Montage";font-size:25px;">
+          Containers are an abstraction at app level where all the dependent libraries and binaries are bundled together. Multiple containers can run on a same machine as they share the host OS and each container running its individual & isolated processes.
+        </p>
+          &nbsp;
+
+        <h3>Virtual Machines</h3>
+        &nbsp;<p style=font-family:"Montage";font-size:25px;>
+        Virtual Machines are an abstraction of utilizing one server as many servers. Each Virtual machine comprises of a full operating system, the necessary application along with binaries and libraries.
+        </p>
+&nbsp;
+        <h3>Comparing Containerization and Virtualization</h3>
+        &nbsp;
+        <p style=font-family:"Montage";font-size:25px;>
+        Both the technologies have very similar goals to distribute application software in isolated packages.The difference comes in the approach and level of virtualization.
+        <ul style=font-family:"Montage";font-size:25px;>
+        <li> Containers running on the host OS just need the necessary libraries and binaries, which makes them light weight and faster to boot up. </li>
+        <li> Containers have better resource utilization compared to virtual machines.</li>
+        <li> Containers require less memory space (MBs) compared to Virtual Machines which require a lot of space (GBs) for operating system.</li>
+        </ul>
+        </p>
+
+<p style=font-family:"Montage";font-size:25px;">
+          Source: <a href="https://www.atlassian.com/continuous-delivery/microservices/containers#:~:text=Containers%20vs%20VMs&text=VM's%20simulate%20the%20entire%20machine,of%20an%20existing%20operating%20system.&text=Containers%20can%20be%20utilized%20in%20an%20existing%20host%20operating%20system.">Atlassian</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>, <a href="https://www.edureka.co/blog/docker-tutorial">Edureka Docker</a>
+        </p>
+
+
+
+
+      </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<div class="position-relative">
+    <footer>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright: IS601 Docker Website Project
+      </div>
+    </footer>
+</div>
+
+  </body>
+</html>
+
+
+
+
