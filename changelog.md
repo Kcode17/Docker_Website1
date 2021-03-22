@@ -4,5 +4,6 @@
 
 ##### Added
 Feature - Virtualization Page
+Feature - Containerization Page
 
 ##### Changed
