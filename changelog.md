@@ -10,3 +10,10 @@ Feature - About Page
 
 ##### Changed
 About page title
+
+#### 22-03-2021
+
+##### Added
+Feature - Team Page
+
+##### Changed
