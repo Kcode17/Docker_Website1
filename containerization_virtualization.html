@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
 
-    <title>Virtualization vs Containerization</title>
+    <title>Containerization vs Virtualization</title>
   </head>
   <body>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -68,52 +68,39 @@
           &nbsp
           <div class="jumbotron jumbotron-fluid">
             <div class="container">
-            <h3>Virtualization vs Containerization</h3>
+            <h3>Containerization vs Virtualization</h3>
             <h1>How do they compare?</h1>
           </div>
       </div>
         &nbsp;
-        <img src="images/container.jpg" style="max-height: 100%; max-width: 100%;" >
+        <img src="images/cv_1.JPG" class="rounded" style="max-height: 100%; max-width: 100%;" >
+        &nbsp;
+        <h3>Containers</h3>
         &nbsp;
         <p style=font-family:"Montage";font-size:25px;">
-          Containerization is the technique of bringing virtualization to the operating system level.
-        This technique involves encapsulating or packaging up software code and all its dependencies so that it can run uniformly and consistently irrespective of the infrastructure being used.
+          Containers are an abstraction at app level where all the dependent libraries and binaries are bundled together. Multiple containers can run on a same machine as they share the host OS and each container running its individual & isolated processes.
         </p>
-        &nbsp;<p style=font-family:"Montage";font-size:25px;">
-        Containerization helps in creating and deploying applications faster and more securely. With traditional methods, code is developed in a specific computing environment which, when transferred to a new location, often results in bugs and errors.
+          &nbsp;
+
+        <h3>Virtual Machines</h3>
+        &nbsp;<p style=font-family:"Montage";font-size:25px;>
+        Virtual Machines are an abstraction of utilizing one server as many servers. Each Virtual machine comprises of a full operating system, the necessary application along with binaries and libraries.
         </p>
-
-
-
-        <div class="text-center">
-          <img src="images/c_1.png" style="max-height: 80%; max-width: 80%;">
-        </div>
-
-        &nbsp;<h3>Containers</h3>
-        <p style=font-family:"Montage";font-size:25px;">
-        A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
-
-        </p>
+&nbsp;
+        <h3>Comparing Containerization and Virtualization</h3>
         &nbsp;
-        &nbsp;
-        <h3>Tech behind Containerization</h3>
-        &nbsp;
-        <div class="text-center">
-          <img src="images/c_2.png" style="max-height: 100%; max-width: 100%;">
-        </div>
-        &nbsp;
-        <p style=font-family:"Montage";font-size:25px;">
-        In Containerization there is no guest OS and utilizes the host’s operating system, share relevant libraries & resources as and when needed unlike virtual machines. Application specific binaries and libraries of containers run on the host kernel, which makes processing and execution very fast. Even booting-up a container takes only a fraction of a second. Because all the containers share, host operating system and holds only the application related binaries & libraries.
+        <p style=font-family:"Montage";font-size:25px;>
+        Both the technologies have very similar goals to distribute application software in isolated packages.The difference comes in the approach and level of virtualization.
+        <ul style=font-family:"Montage";font-size:25px;>
+        <li> Containers running on the host OS just need the necessary libraries and binaries, which makes them light weight and faster to boot up. </li>
+        <li> Containers have better resource utilization compared to virtual machines.</li>
+        <li> Containers require less memory space (MBs) compared to Virtual Machines which require a lot of space (GBs) for operating system.</li>
+        </ul>
         </p>
 
-
-        <p style=font-family:"Montage";font-size:25px;">
-          Source: <a href="https://www.ibm.com/cloud/learn/containerization">IBM Containerization</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>, <a href="https://www.edureka.co/blog/docker-tutorial">Edureka Docker</a>
+<p style=font-family:"Montage";font-size:25px;">
+          Source: <a href="https://www.atlassian.com/continuous-delivery/microservices/containers#:~:text=Containers%20vs%20VMs&text=VM's%20simulate%20the%20entire%20machine,of%20an%20existing%20operating%20system.&text=Containers%20can%20be%20utilized%20in%20an%20existing%20host%20operating%20system.">Atlassian</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>, <a href="https://www.edureka.co/blog/docker-tutorial">Edureka Docker</a>
         </p>
-        &nbsp;
-
-
-
 
 
 
