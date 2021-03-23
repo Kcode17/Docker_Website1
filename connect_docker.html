@@ -94,7 +94,16 @@ RUN export JAVA_HOME
 docker build -t myimage .</pre>
 
 
-
+          <p><b>Step 3</b> − Run docker image interactively with volume mounting to the location of your PyCharm installation:</p>
+          <pre style="border: black 1px solid;padding: 2px;">docker run
+-it #Make docker session interactive
+--rm #Automatically remove the container when it exits
+--gpus all #Enable GPU support in the container
+-e DISPLAY=${DISPLAY} #Pass environment variable display
+--net=host #Share network configu of the host with this container
+--user "$(id -u):$(id -g)" #Pass user id and group id
+-v <path to pycharm in your host machine>:<path to pycharm in docker container> #Volume mounting to access pycharm from the container
+myimage</pre>
 
 
 <p style=font-family:"Montage";font-size:25px;">
