@@ -8,10 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Linux Commands</title>
+    <title>Setup a web server</title>
       <style>
           .new{
               margin-left: 10%;margin-right: 10%;
+          }
+          p{
+              font-family:"Montage";
+              font-size:25px;
           }
       </style>
   </head>
@@ -48,7 +52,7 @@
     </ul>
   </div>
 </nav>
-<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
     <div class="container">
   <div class="row">
     <div class="col">
@@ -57,27 +61,44 @@
           &nbsp
           <div style="background-color: white;padding: 0px;margin: 0px" class="jumbotron jumbotron-fluid">
             <div class="container">
-            <h3>Docker commands</h3>
-            <h1></h1>
+
+            <h1>How to connect Docker with Pycharm to write python code?</h1>
           </div>
       </div>
         &nbsp;
 
         &nbsp;
-        <p><b>1</b>)docker –version</p>
-        &nbsp;<p>This command is used to get the currently installed version of docker</p>
-          <img src="images/docker-version.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
-          <p></p>
-        <p><b>2</b>)docker –version</p>
-        &nbsp;<p>This command is used to get the currently installed version of docker</p>
-          <img src="images/docker-version.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+        <p><b>Step 1</b> − Install Docker.</p>
+          <img src="images/install_docker.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+          <p><b>Step 2</b> − Create a docker image with java installation if it is not already in your base image. In my case, my base image is tensorflow 2 with GPU and Python 3.</p>
+
+        &nbsp;<pre style="border: black 1px solid;padding: 10px;"># Dockerfile for tensorflow 2 with gpu
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+# Install OpenJDK-8
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+
+# Fix certificate issues
+RUN apt-get update && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
+# Setup JAVA_HOME -- useful for docker commandline
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+# build your custom image using the following command
+docker build -t myimage .</pre>
 
 
-&nbsp;
+
 
 
 <p style=font-family:"Montage";font-size:25px;">
-          Source: <a href="https://www.edureka.co/blog/docker-commands/">Edureka</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>
+          Source: <a href="https://www.tutorialspoint.com/docker/building_web_server_docker_file.htm">Tutorial point</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>
         </p>
 
 
@@ -103,8 +124,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-
-
-
