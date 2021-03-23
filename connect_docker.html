@@ -8,23 +8,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Linux Commands</title>
+    <title>How to connect docker with pycharm to write python code</title>
       <style>
           .new{
-              margin-left: 10%;margin-right: 10%;
+              padding-left: 30%;padding-right: 20%;
+          }
+          p{
+              font-family:"Montage";
+              font-size:25px;
           }
       </style>
   </head>
   <body>
     <nav class="navbar new navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Docker, Linux, and Containerization</a>
+  <a class="navbar-brand" href="index.html">Docker, Linux, and Containerization</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div style="padding-left: 13%" class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
@@ -48,7 +52,7 @@
     </ul>
   </div>
 </nav>
-<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
     <div class="container">
   <div class="row">
     <div class="col">
@@ -57,27 +61,53 @@
           &nbsp
           <div style="background-color: white;padding: 0px;margin: 0px" class="jumbotron jumbotron-fluid">
             <div class="container">
-            <h3>Docker commands</h3>
-            <h1></h1>
+
+            <h1>How to connect Docker with Pycharm to write python code?</h1>
           </div>
       </div>
         &nbsp;
 
         &nbsp;
-        <p><b>1</b>)docker –version</p>
-        &nbsp;<p>This command is used to get the currently installed version of docker</p>
-          <img src="images/docker-version.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
-          <p></p>
-        <p><b>2</b>)docker –version</p>
-        &nbsp;<p>This command is used to get the currently installed version of docker</p>
-          <img src="images/docker-version.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+        <p><b>Step 1</b> − Install Docker.</p>
+          <img src="images/install_docker.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+          <p><b>Step 2</b> − Create a docker image with java installation if it is not already in your base image. In my case, my base image is tensorflow 2 with GPU and Python 3.</p>
+
+        &nbsp;<pre style="border: black 1px solid;padding: 10px;"># Dockerfile for tensorflow 2 with gpu
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+# Install OpenJDK-8
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+
+# Fix certificate issues
+RUN apt-get update && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
+# Setup JAVA_HOME -- useful for docker commandline
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+# build your custom image using the following command
+docker build -t myimage .</pre>
 
 
-&nbsp;
+          <p><b>Step 3</b> − Run docker image interactively with volume mounting to the location of your PyCharm installation:</p>
+          <pre style="border: black 1px solid;padding: 2px;">docker run
+-it #Make docker session interactive
+--rm #Automatically remove the container when it exits
+--gpus all #Enable GPU support in the container
+-e DISPLAY=${DISPLAY} #Pass environment variable display
+--net=host #Share network configu of the host with this container
+--user "$(id -u):$(id -g)" #Pass user id and group id
+-v <path to pycharm in your host machine>:<path to pycharm in docker container> #Volume mounting to access pycharm from the container
+myimage</pre>
 
 
 <p style=font-family:"Montage";font-size:25px;">
-          Source: <a href="https://www.edureka.co/blog/docker-commands/">Edureka</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>
+          Source: <a href="https://www.tutorialspoint.com/docker/building_web_server_docker_file.htm">Tutorial point</a>, <a href="https://www.docker.com/resources/what-container">Docker</a>
         </p>
 
 
@@ -103,8 +133,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-
-
-
