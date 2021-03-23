@@ -11,7 +11,10 @@
     <title>Linux Commands</title>
       <style>
           .new{
-              margin-left: 10%;margin-right: 10%;
+              padding-left: 19%;
+          }
+          p{
+            font-family:"Montage";font-size:25px;
           }
       </style>
   </head>
@@ -21,7 +24,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div style="padding-left: 33%" class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -64,13 +67,52 @@
         &nbsp;
 
         &nbsp;
-        <p><b>1</b>)docker –version</p>
+        <p><b>1)docker –version</b></p>
         &nbsp;<p>This command is used to get the currently installed version of docker</p>
           <img src="images/docker-version.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
           <p></p>
-        <p><b>2</b>)docker –version</p>
-        &nbsp;<p>This command is used to get the currently installed version of docker</p>
-          <img src="images/docker-version.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+        <p><b>2)docker –pull</b></p>
+        <p style="font-family:'Courier New'">docker pull < image name ></p>
+        &nbsp;<p>This command is used to pull images from the docker repository(hub.docker.com)</p>
+          <img src="images/docker_pull.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<br/><p></p>
+        <p><b>3</b>)docker –run</p>
+        <p style="font-family:'Courier New'">docker run -it -d <image name></p>
+        &nbsp;<p>This command is used to create a container from an image</p>
+          <img src="images/docker_run.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+            <p><b>4</b>)docker ps</p>
+        &nbsp;<p>This command is used to list the running containers</p>
+          <img src="images/docker_ps.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+            <p><b>5</b>)docker ps-a</p>
+        &nbsp;<p>This command is used to show all the running and exited containers</p>
+          <img src="images/docker_ps_a.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+            <p><b>6</b>)docker exec</p>
+        <p style="font-family:'Courier New'">docker exec -it < container id > bash</p>
+        &nbsp;<p>This command is used to access the running container</p>
+          <img src="images/docker_exec.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+        <p><b>7</b>)docker stop</p>
+        <p style="font-family:'Courier New'">docker stop < container id ></p>
+        &nbsp;<p>This command stops a running container</p>
+          <img src="images/docker_stop.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+        <p><b>8</b>)docker kill</p>
+        <p style="font-family:'Courier New'">docker kill < container id ></p>
+        &nbsp;<p>This command kills the container by stopping its execution immediately. The difference between ‘docker kill’ and ‘docker stop’ is that ‘docker stop’ gives the container time to shutdown gracefully, in situations when it is taking too much time for getting the container to stop, one can opt to kill it</p>
+          <img src="images/docker_kill.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+        <p><b>9</b>)docker commit</p>
+        <p style="font-family:'Courier New'">docker commit < conatainer id > < username/imagename > </p>
+        &nbsp;<p>This command creates a new image of an edited container on the local system</p>
+          <img src="images/docker_commit.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
+        <p><b>10</b>)docker login</p>
+        &nbsp;<p>This command is used to login to the docker hub repository</p>
+          <img src="images/docker_login.png" class="rounded" style="max-height: 100%; max-width: 100%;" >
+<p></p>
 
 
 &nbsp;
